@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="# Understand JavaScript&amp;#x2019;s &amp;#x201C;this&amp;#x201D; With Clarity, and Master It&amp;#xBB;july. 5 2 Years Ago 124
+
+### (Also learn all the scenarios when this is most misunderstood.)Prerequisite: A bit o">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blog">
+<meta property="og:url" content="http://yoursite.com/client-develop/javascript-use-this/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="# Understand JavaScript&amp;#x2019;s &amp;#x201C;this&amp;#x201D; With Clarity, and Master It&amp;#xBB;july. 5 2 Years Ago 124
+
+### (Also learn all the scenarios when this is most misunderstood.)Prerequisite: A bit o">
+<meta property="og:updated_time" content="2015-08-13T01:18:17.395Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Blog">
+<meta name="twitter:description" content="# Understand JavaScript&amp;#x2019;s &amp;#x201C;this&amp;#x201D; With Clarity, and Master It&amp;#xBB;july. 5 2 Years Ago 124
+
+### (Also learn all the scenarios when this is most misunderstood.)Prerequisite: A bit o">
+  
+    <link rel="alternative" href="/atom.xml" title="Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/client-develop/javascript-use-this/index.html" class="article-date">
+  <time datetime="2015-08-13T01:18:17.395Z" itemprop="datePublished">2015-08-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        <div id="toc" class="toc-article">
+          <strong class="toc-title">文章目录</strong>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#javascripts-this-keyword-basics"><span class="toc-number">1.</span> <span class="toc-text">JavaScript’s this Keyword Basics</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#the-biggest-gotcha-with-javascript-this-keyword"><span class="toc-number">2.</span> <span class="toc-text">The Biggest Gotcha with JavaScript “this” keyword</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#the-use-of-this-in-the-global-scope"><span class="toc-number">3.</span> <span class="toc-text">The use of this in the global scope</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#when-this-is-most-misunderstood-and-becomes-tricky"><span class="toc-number">4.</span> <span class="toc-text">When this is most misunderstood and becomes tricky</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fix-this-when-used-in-a-method-passed-as-a-callback"><span class="toc-number">5.</span> <span class="toc-text">Fix this when used in a method passed as a callback</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fix-this-inside-closure"><span class="toc-number">6.</span> <span class="toc-text">Fix this inside closure</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fix-this-when-method-is-assigned-to-a-variable"><span class="toc-number">7.</span> <span class="toc-text">Fix this when method is assigned to a variable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fix-this-when-borrowing-methods"><span class="toc-number">8.</span> <span class="toc-text">Fix this when borrowing methods</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#final-words"><span class="toc-number">8.1.</span> <span class="toc-text">Final Words</span></a></li></ol></li></ol>
+        </div>
+        <div class="post-1273 post type-post status-publish format-standard hentry category-16-important-javascript-concepts category-javascript tag-beginner-javascript tag-intermediate-javascript tag-javascript-this tag-javascript-tips" id="post-1273"><br><br># Understand JavaScript&#x2019;s &#x201C;this&#x201D; With Clarity, and Master It<br><br><div class="dateWrapper"><span class="double-arrow-pre-date">&#xBB;</span><span class="dateMonth">july.</span> 5 2 Years Ago <span class="comment-count"><a href="http://javascriptissexy.com/understand-javascripts-this-with-clarity-and-master-it/#comments" target="_blank" rel="external">124</a></span></div>
+
+<div class="entry-content"><br><br>### (Also learn all the scenarios when <em>this</em> is most misunderstood.)<br><br><span class="underlineText">Prerequisite:</span> A bit of JavaScript.<br> <span class="underlineText">Duration:</span> about 40 minutes.<br><br>The <em>this</em> keyword in JavaScript confuses new and seasoned JavaScript developers alike. This article aims to elucidate <em>this</em> in its entirety. By the time we make it through this article, <em>this</em> will be one part of JavaScript we never have to worry about again. We will understand how to use <em>this</em> correctly in every scenario, including the ticklish situations where it usually proves most elusive.<br><br><div id="toc_container" class="no_bullets"><br><br>Table of Contents<br><br><em>   <a href="#Receive_Updates"><span class="toc_number toc_depth_1"></span>Receive Updates</a>
+</em>   <a href="#JavaScript8217s_this_Keyword_Basics"><span class="toc_number toc_depth_1"></span>JavaScript&#x2019;s this Keyword Basics</a><br><em>   <a href="#The_Biggest_Gotcha_with_JavaScript_8220this8221_keyword"><span class="toc_number toc_depth_1"></span>The Biggest Gotcha with JavaScript &#x201C;this&#x201D; keyword</a>
+</em>   <a href="#The_use_of_this_in_the_global_scope"><span class="toc_number toc_depth_1"></span>The use of this in the global scope</a><br><em>   <a href="#When_this_is_most_misunderstood_and_becomes_tricky"><span class="toc_number toc_depth_1"></span>When this is most misunderstood and becomes tricky</a>
+</em>   <a href="#Fix_this_when_used_in_a_method_passed_as_a_callback"><span class="toc_number toc_depth_1"></span>Fix this when used in a method passed as a callback</a><br><em>   <a href="#Fix_this_inside_closure"><span class="toc_number toc_depth_1"></span>Fix this inside closure</a>
+</em>   <a href="#Fix_this_when_method_is_assigned_to_a_variable"><span class="toc_number toc_depth_1"></span>Fix this when method is assigned to a variable</a><br><em>   <a href="#Fix_this_when_borrowing_methods"><span class="toc_number toc_depth_1"></span>Fix this when borrowing methods</a>
+</em>   <a href="#Our_Career_Paths_and_Courses_Website_Is_Now_Live"><span class="toc_number toc_depth_1"></span>Our Career Paths and Courses Website Is Now Live</a><br><br></div>
+
+<div id="Widgets_on_Pages_1" class="widgets_on_page"><br><br>*   ## <span id="Receive_Updates">Receive Updates</span><br><br>    <form action="/understand-javascripts-this-with-clarity-and-master-it/" id="ns_widget_mailchimp_form-3" method="post"><input name="ns_mc_number" value="3" type="hidden"><label class="subscriptionEmailLabel" for="ns_widget_mailchimp-email-3">Email Address :</label><input id="ns_widget_mailchimp-email-3" name="ns_widget_mailchimp_email" placeholder="Your Email:" type="text"><input class="button" name="Go" value="Go" type="submit"></form><br><br>    <script>jQuery(‘#ns_widget_mailchimp_form-3’).ns_mc_widget({“url” : “/index.php”, “cookie_id” : “ns_widget_mailchimp-3”, “cookie_value” : “506c63f22d5c63e8f53d97a6b3f70a1b”, “loader_graphic” : “<a href="http://javascriptissexy.com/wp-content/plugins/mailchimp-widget/images/ajax-loader.gif&quot;}">http://javascriptissexy.com/wp-content/plugins/mailchimp-widget/images/ajax-loader.gif&quot;}</a>);</script><br><br></div>
+
+<p>We use <em>this</em> similar to the way we use pronouns in natural languages like English and French. We write, &#x201C;John is running fast because <em>he</em> is trying to catch the train.&#x201D; Note the use of the pronoun &#x201C;he.&#x201D; We could have written this: &#x201C;John is running fast because <strong>John</strong> is trying to catch the train.&#x201D; We don&#x2019;t reuse &#x201C;John&#x201D; in this manner, for if we do, our family, friends, and colleagues would abandon us. Yes, they would. Well, maybe not your family, but those of us with fair-weather friends and colleagues. In a similar graceful manner, in JavaScript, we use the <em>this</em> keyword as a shortcut, a referent; it refers to an object; that is, the subject in context, or the subject of the executing code. Consider this example:</p>
+<pre>
+
+<table class="rainbow" data-language="javascript">
+
+<tbody>
+
+<tr class="line line-1">
+
+<td class="line-code">    <span class="keyword">var</span> person <span class="keyword operator">=</span> {</td>
+
+</tr>
+
+<tr class="line line-2">
+
+<td class="line-code">    firstName: <span class="string">&quot;Penelope&quot;</span>,</td>
+
+</tr>
+
+<tr class="line line-3">
+
+<td class="line-code">    lastName: <span class="string">&quot;Barrymore&quot;</span>,</td>
+
+</tr>
+
+<tr class="line line-4">
+
+<td class="line-code">    <span class="entity function">fullName</span>: <span class="storage function">function</span> () {</td>
+
+</tr>
+
+<tr class="line line-5">
+
+<td class="line-code">        &#x200B;<span class="comment">// Notice we use &quot;this&quot; just as we used &quot;he&quot; in the example sentence earlier?:</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-6">
+
+<td class="line-code">        console.<span class="support method">log</span>(<span class="keyword">this</span>.firstName <span class="keyword operator">+</span> <span class="string">&quot; &quot;</span> <span class="keyword operator">+</span> <span class="keyword">this</span>.lastName);</td>
+
+</tr>
+
+<tr class="line line-7">
+
+<td class="line-code">    &#x200B;<span class="comment">// We could have also written this:&#x200B;</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-8">
+
+<td class="line-code">        console.<span class="support method">log</span>(person.firstName <span class="keyword operator">+</span> <span class="string">&quot; &quot;</span> <span class="keyword operator">+</span> person.lastName);</td>
+
+</tr>
+
+<tr class="line line-9">
+
+<td class="line-code">    }</td>
+
+</tr>
+
+<tr class="line line-10">
+
+<td class="line-code">}</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</pre>
+
+<p>If we use person.firstName and person.lastName, as in the last example, our code becomes ambiguous. Consider that there could be another global variable (that we might or might not be aware of) with the name &#x201C;person.&#x201D; Then, references to person.firstName could attempt to access the fistName property from the <em>person</em> global variable, and this could lead to difficult-to-debug errors. So we use the &#x201C;this&#x201D; keyword not only for aesthetics (i.e., as a referent), but also for precision; its use actually makes our code more unambiguous, just as the pronoun &#x201C;he&#x201D; made our sentence more clear. It tells us that we are referring to the specific John at the beginning of the sentence.</p>
+<p>Just like the pronoun &#x201C;he&#x201D; is used to refer to the antecedent (antecedent is the noun that a pronoun refers to), the <em>this</em> keyword is similarly used to refer to an object that the function (where <em>this</em> is used) is bound to. The <em>this</em> keyword not only refers to the object but it also contains the value of the object. Just like the pronoun, <em>this</em> can be thought of as a shortcut (or a reasonably unambiguous substitute) to refer back to the object in <em>context</em> (the &#x201C;antecedent object&#x201D;). We will learn more about <em>context</em> later.</p>
+<h2 id="javascripts-this-keyword-basics"><span id="JavaScript8217s_this_Keyword_Basics">JavaScript&#x2019;s <em>this</em> Keyword Basics</span></h2><p>First, know that all functions in JavaScript have properties, just as objects have properties. And when a function executes, it gets the <em>this</em> property&#x2014;a variable with the <strong>value of <em>the object</em> that invokes the function where <em>this</em> is used</strong>.</p>
+<p>The <em>this</em> reference ALWAYS refers to (and holds the value of) an object&#x2014;a singular object&#x2014;and it is usually used inside a function or a method, although it can be used outside a function in the global scope. Note that when we use <strong>strict mode</strong>, <em>this</em> holds the value of <em>undefined</em> in global functions and in anonymous functions that are not bound to any object.<br> <span id="more-1273"></span><br><em>this</em> is used inside a function (let&#x2019;s say function A) and it contains the value of the <strong>object</strong> that invokes function A. We need <em>this</em> to access methods and properties of the object that invokes function A, especially since we don&#x2019;t always know the name of the invoking object, and sometimes there is no name to use to refer to the invoking object. Indeed, <em>this</em> is really just a shortcut reference for the &#x201C;antecedent object&#x201D;&#x2014;the invoking object.</p>
+<p>Ruminate on this basic example illustrating the use of <em>this</em> in JavaScript:</p>
+<pre>
+
+<table class="rainbow" data-language="javascript">
+
+<tbody>
+
+<tr class="line line-1">
+
+<td class="line-code">    <span class="keyword">var</span> person <span class="keyword operator">=</span> {</td>
+
+</tr>
+
+<tr class="line line-2">
+
+<td class="line-code">    firstName   :<span class="string">&quot;Penelope&quot;</span>,</td>
+
+</tr>
+
+<tr class="line line-3">
+
+<td class="line-code">    lastName    :<span class="string">&quot;Barrymore&quot;</span>,</td>
+
+</tr>
+
+<tr class="line line-4">
+
+<td class="line-code">    <span class="comment">// Since the &quot;this&quot; keyword is used inside the showFullName method below, and the showFullName method is defined on the person object,</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-5">
+
+<td class="line-code">    <span class="comment">// &quot;this&quot; will have the value of the person object because the person object will invoke showFullName ()</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-6">
+
+<td class="line-code">    <span class="entity function">showFullName</span>:<span class="storage function">function</span> () {</td>
+
+</tr>
+
+<tr class="line line-7">
+
+<td class="line-code">    console.log (<span class="keyword">this</span>.firstName <span class="keyword operator">+</span> <span class="string">&quot; &quot;</span> <span class="keyword operator">+</span> <span class="keyword">this</span>.lastName);</td>
+
+</tr>
+
+<tr class="line line-8">
+
+<td class="line-code">    }</td>
+
+</tr>
+
+<tr class="line line-9">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+<tr class="line line-10">
+
+<td class="line-code">    }</td>
+
+</tr>
+
+<tr class="line line-11">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+<tr class="line line-12">
+
+<td class="line-code">    person.showFullName (); <span class="comment">// Penelope Barrymore</span></td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</pre>
+
+<p>And consider this basic jQuery example with of <em>this</em>:</p>
+<pre>
+
+<table class="rainbow" data-language="javascript">
+
+<tbody>
+
+<tr class="line line-1">
+
+<td class="line-code">    <span class="comment">// A very common piece of jQuery code</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-2">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+<tr class="line line-3">
+
+<td class="line-code">    $ (<span class="string">&quot;button&quot;</span>).click (<span class="storage function">function</span> (event) {</td>
+
+</tr>
+
+<tr class="line line-4">
+
+<td class="line-code">    <span class="comment">// $(this) will have the value of the button ($(&quot;button&quot;)) object</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-5">
+
+<td class="line-code">&#x200B;<span class="comment">// because the button object invokes the click () method</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-6">
+
+<td class="line-code">    console.log ($ (<span class="keyword">this</span>).prop (<span class="string">&quot;name&quot;</span>));</td>
+
+</tr>
+
+<tr class="line line-7">
+
+<td class="line-code">    });</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</pre>
+
+<p>I shall expound on the preceding jQuery example: The use of <em>$(this)</em>, which is jQuery&#x2019;s syntax for the <em>this</em> keyword in JavaScript, is used inside an anonymous function, and the anonymous function is executed in the button&#x2019;s click () method. The reason $(this) is bound to the button object is because the jQuery library <strong>binds</strong> $(this) to the object that invokes the click method. Therefore, $(this) will have the value of the jQuery button ($(&#x201C;button&#x201D;)) object, even though $(this) is defined inside an anonymous function that cannot itself access the &#x201C;this&#x201D; variable on the outer function.</p>
+<p>Note that the button is a DOM element on the HTML page, and it is also an object; in this case it is a jQuery object because we wrapped it in the jQuery <em>$()</em> function.</p>
+<p><strong>UPDATE:</strong> the following (&#x201C;Biggest Gotcha&#x201D; section) was added a couple of days after I published the article</p>
+<h2 id="the-biggest-gotcha-with-javascript-this-keyword"><span id="The_Biggest_Gotcha_with_JavaScript_8220this8221_keyword">The Biggest Gotcha with JavaScript &#x201C;this&#x201D; keyword</span></h2><p>If you understand this one principle of JavaScript&#x2019;s <em>this</em>, you will understand the &#x201C;this&#x201D; keyword with clarity: <em>this</em> is not assigned a value until an object invokes the function where <em>this</em> is defined. Let&#x2019;s call the function where <em>this</em> is defined the &#x201C;<em>this Function</em>.&#x201D;</p>
+<p>Even though it appears <em>this</em> refers to the object where it is defined, it is not until an object invokes the <em>this Function</em> that <em>this</em> is actually assigned a value. And the value it is assigned is based <strong>exclusively</strong> on the <strong>object</strong> that invokes the <em>this Function</em>. <em>this</em> has the value of the invoking object in most circumstances. However, there are a few scenarios where <em>this</em> does not have the value of the invoking object. I touch on those scenarios later.</p>
+<h2 id="the-use-of-this-in-the-global-scope"><span id="The_use_of_this_in_the_global_scope">The use of <em>this</em> in the global scope</span></h2><p>In the global scope, when the code is executing in the browser, all global variables and functions are defined on the <em>window</em> object. Therefore, when we use <em>this</em> in a global function, it refers to (and has the value of) the global <em>window</em> object (not in strict mode though, as noted earlier) that is the main container of the entire JavaScript application or web page.</p>
+<p>Thus:</p>
+<pre>
+
+<table class="rainbow" data-language="javascript">
+
+<tbody>
+
+<tr class="line line-1">
+
+<td class="line-code">    <span class="keyword">var</span> firstName <span class="keyword operator">=</span> <span class="string">&quot;Peter&quot;</span>,</td>
+
+</tr>
+
+<tr class="line line-2">
+
+<td class="line-code">    lastName <span class="keyword operator">=</span> <span class="string">&quot;Ally&quot;</span>;</td>
+
+</tr>
+
+<tr class="line line-3">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+<tr class="line line-4">
+
+<td class="line-code">    <span class="storage function">function</span> <span class="entity name function">showFullName</span> () {</td>
+
+</tr>
+
+<tr class="line line-5">
+
+<td class="line-code">    <span class="comment">// &quot;this&quot; inside this function will have the value of the window object</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-6">
+
+<td class="line-code">    <span class="comment">// because the showFullName () function is defined in the global scope, just like the firstName and lastName</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-7">
+
+<td class="line-code">    console.log (<span class="keyword">this</span>.firstName <span class="keyword operator">+</span> <span class="string">&quot; &quot;</span> <span class="keyword operator">+</span> <span class="keyword">this</span>.lastName);</td>
+
+</tr>
+
+<tr class="line line-8">
+
+<td class="line-code">    }</td>
+
+</tr>
+
+<tr class="line line-9">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+<tr class="line line-10">
+
+<td class="line-code">    <span class="keyword">var</span> person <span class="keyword operator">=</span> {</td>
+
+</tr>
+
+<tr class="line line-11">
+
+<td class="line-code">    firstName   :<span class="string">&quot;Penelope&quot;</span>,</td>
+
+</tr>
+
+<tr class="line line-12">
+
+<td class="line-code">    lastName    :<span class="string">&quot;Barrymore&quot;</span>,</td>
+
+</tr>
+
+<tr class="line line-13">
+
+<td class="line-code">    <span class="entity function">showFullName</span>:<span class="storage function">function</span> () {</td>
+
+</tr>
+
+<tr class="line line-14">
+
+<td class="line-code">    <span class="comment">// &quot;this&quot; on the line below refers to the person object, because the showFullName function will be invoked by person object.</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-15">
+
+<td class="line-code">    console.log (<span class="keyword">this</span>.firstName <span class="keyword operator">+</span> <span class="string">&quot; &quot;</span> <span class="keyword operator">+</span> <span class="keyword">this</span>.lastName);</td>
+
+</tr>
+
+<tr class="line line-16">
+
+<td class="line-code">    }</td>
+
+</tr>
+
+<tr class="line line-17">
+
+<td class="line-code">    }</td>
+
+</tr>
+
+<tr class="line line-18">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+<tr class="line line-19">
+
+<td class="line-code">    showFullName (); <span class="comment">// Peter Ally</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-20">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+<tr class="line line-21">
+
+<td class="line-code">    <span class="comment">// window is the object that all global variables and functions are defined on, hence:</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-22">
+
+<td class="line-code">    <span class="support">window</span>.showFullName (); <span class="comment">// Peter Ally</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-23">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+<tr class="line line-24">
+
+<td class="line-code">    <span class="comment">// &quot;this&quot; inside the showFullName () method that is defined inside the person object still refers to the person object, hence:</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-25">
+
+<td class="line-code">    person.showFullName (); <span class="comment">// Penelope Barrymore</span></td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</pre>
+
+<h2 id="when-this-is-most-misunderstood-and-becomes-tricky"><span id="When_this_is_most_misunderstood_and_becomes_tricky">When <em>this</em> is most misunderstood and becomes tricky</span></h2><p>The <em>this</em> keyword is most misunderstood when we borrow a method that uses <em>this</em>, when we assign a method that uses <em>this</em> to a variable, when a function that uses <em>this</em> is passed as a callback function, and when <em>this</em> is used inside a closure&#x2014;an inner function. We will look at each scenario and the solutions for maintaining the proper value of <em>this</em> in each example.</p>
+<div class="specialNote"><strong>A bit about &#x201C;Context&#x201D; before we continue</strong><br> The <em>context</em> in JavaScript is similar to the subject of a sentence in English: &#x201C;John is the winner who returned the money.&#x201D; The subject of the sentence is John, and we can say the <em>context</em> of the sentence is John because the focus of the sentence is on him at this particular time in the sentence. Even the &#x201C;who&#x201D; pronoun is referring to John, the antecedent. And just like we can use a semicolon to switch the subject of the sentence, we can have an object that is current context and switch the context to another object by invoking the function with another object.<br><br>Similarly, in JavaScript code:<br><br><pre><br><br><table class="rainbow" data-language="javascript"><br><br><tbody><br><br><tr class="line line-1"><br><br><td class="line-code"><span class="keyword">var</span> person <span class="keyword operator">=</span> {</td><br><br></tr><br><br><tr class="line line-2"><br><br><td class="line-code">   firstName   :<span class="string">&#x201C;Penelope&#x201D;</span>,</td><br><br></tr><br><br><tr class="line line-3"><br><br><td class="line-code">   lastName    :<span class="string">&#x201C;Barrymore&#x201D;</span>,</td><br><br></tr><br><br><tr class="line line-4"><br><br><td class="line-code">   <span class="entity function">showFullName</span>:<span class="storage function">function</span> () {</td><br><br></tr><br><br><tr class="line line-5"><br><br><td class="line-code">&#x200B;<span class="comment">// The &#x201C;context&#x201D;</span>&#x200B;</td><br><br></tr><br><br><tr class="line line-6"><br><br><td class="line-code">console.log (<span class="keyword">this</span>.firstName <span class="keyword operator">+</span> <span class="string">&#x201C; &#x201C;</span> <span class="keyword operator">+</span> <span class="keyword">this</span>.lastName);</td><br><br></tr><br><br><tr class="line line-7"><br><br><td class="line-code"> }</td><br><br></tr><br><br><tr class="line line-8"><br><br><td class="line-code">}</td><br><br></tr><br><br><tr class="line line-9"><br><br><td class="line-code">&#x200B;</td><br><br></tr><br><br><tr class="line line-10"><br><br><td class="line-code">&#x200B;<span class="comment">// The &#x201C;context&#x201D;, when invoking showFullName, is the person object, when we invoke the showFullName () method on the person object.</span>&#x200B;</td><br><br></tr><br><br><tr class="line line-11"><br><br><td class="line-code">&#x200B;<span class="comment">// And the use of &#x201C;this&#x201D; inside the showFullName() method has the value of the person object,</span>&#x200B;</td><br><br></tr><br><br><tr class="line line-12"><br><br><td class="line-code">person.showFullName (); <span class="comment">// Penelope Barrymore</span>&#x200B;</td><br><br></tr><br><br><tr class="line line-13"><br><br><td class="line-code">&#x200B;</td><br><br></tr><br><br><tr class="line line-14"><br><br><td class="line-code">&#x200B;<span class="comment">// If we invoke showFullName with a different object:</span>&#x200B;</td><br><br></tr><br><br><tr class="line line-15"><br><br><td class="line-code">&#x200B;<span class="keyword">var</span> anotherPerson <span class="keyword operator">=</span> {</td><br><br></tr><br><br><tr class="line line-16"><br><br><td class="line-code">firstName   :<span class="string">&#x201C;Rohit&#x201D;</span>,</td><br><br></tr><br><br><tr class="line line-17"><br><br><td class="line-code">lastName    :<span class="string">&#x201C;Khan&#x201D;</span>&#x200B;</td><br><br></tr><br><br><tr class="line line-18"><br><br><td class="line-code">};</td><br><br></tr><br><br><tr class="line line-19"><br><br><td class="line-code">&#x200B;</td><br><br></tr><br><br><tr class="line line-20"><br><br><td class="line-code">&#x200B;<span class="comment">// We can use the apply method to set the &#x201C;this&#x201D; value explicitly&#x2014;more on the apply () method later.</span>&#x200B;</td><br><br></tr><br><br><tr class="line line-21"><br><br><td class="line-code">&#x200B;<span class="comment">// &#x201C;this&#x201D; gets the value of whichever object invokes the &#x201C;this&#x201D; Function, hence:</span>&#x200B;</td><br><br></tr><br><br><tr class="line line-22"><br><br><td class="line-code">person.showFullName.apply (anotherPerson); <span class="comment">// Rohit Khan</span>&#x200B;</td><br><br></tr><br><br><tr class="line line-23"><br><br><td class="line-code">&#x200B;</td><br><br></tr><br><br><tr class="line line-24"><br><br><td class="line-code">&#x200B;<span class="comment">// So the context is now anotherPerson because anotherPerson invoked the person.showFullName ()  method by virtue of using the apply () method</span>&#x200B;</td><br><br></tr><br><br></tbody><br><br></table><br><br></pre><br><br>The takeaway is that the object that invokes the <em>this Function</em> is in context, and we can change the context by invoking the <em>this Function</em> with another object; then this new object is in <em>context</em>.<br><br></div>
+
+<p>Here are scenarios when the <em>this</em> keyword becomes tricky. The examples include solutions to fix errors with <em>this</em>:</p>
+<ol>
+<li><h2 id="fix-this-when-used-in-a-method-passed-as-a-callback"><span id="Fix_this_when_used_in_a_method_passed_as_a_callback">Fix <em>this</em> when used in a method passed as a callback</span></h2><p>Things get a touch hairy when we pass a method (that uses <em>this</em>) as a parameter to be used as a callback function. For example:</p>
+<pre>
+
+<table class="rainbow" data-language="javascript">
+
+<tbody>
+
+<tr class="line line-1">
+
+<td class="line-code">    <span class="comment">// We have a simple object with a clickHandler method that we want to use when a button on the page is clicked</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-2">
+
+<td class="line-code">    <span class="keyword">var</span> user <span class="keyword operator">=</span> {</td>
+
+</tr>
+
+<tr class="line line-3">
+
+<td class="line-code">    data:[</td>
+
+</tr>
+
+<tr class="line line-4">
+
+<td class="line-code">    {name:<span class="string">&quot;T. Woods&quot;</span>, age:<span class="constant numeric">37</span>},</td>
+
+</tr>
+
+<tr class="line line-5">
+
+<td class="line-code">    {name:<span class="string">&quot;P. Mickelson&quot;</span>, age:<span class="constant numeric">43</span>}</td>
+
+</tr>
+
+<tr class="line line-6">
+
+<td class="line-code">    ],</td>
+
+</tr>
+
+<tr class="line line-7">
+
+<td class="line-code">    <span class="entity function">clickHandler</span>:<span class="storage function">function</span> (event) {</td>
+
+</tr>
+
+<tr class="line line-8">
+
+<td class="line-code">    <span class="keyword">var</span> randomNum <span class="keyword operator">=</span> ((Math.random () <span class="keyword operator">*</span> <span class="constant numeric">2</span> <span class="keyword operator">|</span> <span class="constant numeric">0</span>) <span class="keyword operator">+</span> <span class="constant numeric">1</span>) <span class="keyword operator">-</span> <span class="constant numeric">1</span>; <span class="comment">// random number between 0 and 1</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-9">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+<tr class="line line-10">
+
+<td class="line-code">    <span class="comment">// This line is printing a random person&apos;s name and age from the data array</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-11">
+
+<td class="line-code">    console.log (<span class="keyword">this</span>.data[randomNum].name <span class="keyword operator">+</span> <span class="string">&quot; &quot;</span> <span class="keyword operator">+</span> <span class="keyword">this</span>.data[randomNum].age);</td>
+
+</tr>
+
+<tr class="line line-12">
+
+<td class="line-code">    }</td>
+
+</tr>
+
+<tr class="line line-13">
+
+<td class="line-code">    }</td>
+
+</tr>
+
+<tr class="line line-14">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+<tr class="line line-15">
+
+<td class="line-code">    <span class="comment">// The button is wrapped inside a jQuery $ wrapper, so it is now a jQuery object</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-16">
+
+<td class="line-code">    <span class="comment">// And the output will be undefined because there is no data property on the button object</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-17">
+
+<td class="line-code">    $ (<span class="string">&quot;button&quot;</span>).click (user.clickHandler); <span class="comment">// Cannot read property &apos;0&apos; of undefined</span></td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</pre>
+
+<p>In the code above, since the button ($(&#x201C;button&#x201D;)) is an object on its own, and we are passing the <em>user.clickHandler</em> method to its click() method as a callback, we know that <em>this</em> inside our <em>user.clickHandler</em> method will no longer refer to the <em>user</em> object. <em>this</em> will now refer to the object where the user.clickHandler method is executed because <em>this</em> is defined inside the user.clickHandler method. And the object that is invoking user.clickHandler is the button object&#x2014;user.clickHandler will be executed inside the button object&#x2019;s click method.</p>
+<p>Note that even though we are calling the clickHandler () method with <strong>user</strong>.clickHandler (which we have to do, since clickHandler is a method defined on user), the clickHandler () method itself will be executed with the button object as the context to which &#x201C;this&#x201D; now refers. So <em>this</em> now refers to is the button ($(&#x201C;button&#x201D;)) object.</p>
+<p>At this point, it should be apparent that when the context changes&#x2014;when we execute a method on some other object than where the object was originally defined, the <em>this</em> keyword no longer refers to the original object where &#x201C;this&#x201D; was originally defined, but it now refers to the object that invokes the <strong>method</strong> where <em>this</em> was defined.</p>
+<p><strong>Solution to fix <em>this</em> when a method is passed as a callback function:</strong><br> Since we really want this.data to refer to the data property on the <em>user</em> object, we can use the Bind (), Apply (), or Call () method to specifically set the value of <em>this</em>.</p>
+<p>I have written an exhaustive article, <a href="http://javascriptissexy.com/javascript-apply-call-and-bind-methods-are-essential-for-javascript-professionals/" title="JavaScript&#x2019;s Apply, Call, and Bind Methods are Essential for JavaScript Professionals" target="_blank" rel="external">JavaScript&#x2019;s Apply, Call, and Bind Methods are Essential for JavaScript Professionals</a>, on these methods, including how to use them to set the <em>this</em> value in various misunderstood scenarios. Rather than re-post all the details here, I recommend you read that entire article, which I consider a must read for JavaScript Professionals.</p>
+<p>To fix this problem in the preceding example, we can use the bind method thus:</p>
+<p>Instead of this line:</p>
+<pre>
+
+<table class="rainbow" data-language="javascript">
+
+<tbody>
+
+<tr class="line line-1">
+
+<td class="line-code"> $ (<span class="string">&quot;button&quot;</span>).click (user.clickHandler);</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</pre>
+
+<p>We have to <strong>bind</strong> the clickHandler method to the user object like this:</p>
+<pre>
+
+<table class="rainbow" data-language="javascript">
+
+<tbody>
+
+<tr class="line line-1">
+
+<td class="line-code">   <span class="selector"> $</span>(<span class="string">&quot;button&quot;</span>).click (user.clickHandler.bind (user)); <span class="comment">// P. Mickelson 43</span></td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</pre>
+
+<p>&#x2014; <a href="http://jsbin.com/exanul/1/edit" target="_blank" rel="external">View a working example of this on JSBin</a></p>
+</li>
+<li><h2 id="fix-this-inside-closure"><span id="Fix_this_inside_closure">Fix <em>this</em> inside closure</span></h2><p>Another instance when <em>this</em> is misunderstood is when we use an inner method (a closure). It is important to take note that closures cannot access the outer function&#x2019;s <em>this</em> variable by using the <em>this</em> keyword because the <em>this</em> variable is accessible only by the function itself, not by inner functions. For example:</p>
+<pre>
+
+<table class="rainbow" data-language="javascript">
+
+<tbody>
+
+<tr class="line line-1">
+
+<td class="line-code">    <span class="keyword">var</span> user <span class="keyword operator">=</span> {</td>
+
+</tr>
+
+<tr class="line line-2">
+
+<td class="line-code">    tournament:<span class="string">&quot;The Masters&quot;</span>,</td>
+
+</tr>
+
+<tr class="line line-3">
+
+<td class="line-code">    data      :[</td>
+
+</tr>
+
+<tr class="line line-4">
+
+<td class="line-code">    {name:<span class="string">&quot;T. Woods&quot;</span>, age:<span class="constant numeric">37</span>},</td>
+
+</tr>
+
+<tr class="line line-5">
+
+<td class="line-code">    {name:<span class="string">&quot;P. Mickelson&quot;</span>, age:<span class="constant numeric">43</span>}</td>
+
+</tr>
+
+<tr class="line line-6">
+
+<td class="line-code">    ],</td>
+
+</tr>
+
+<tr class="line line-7">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+<tr class="line line-8">
+
+<td class="line-code">    <span class="entity function">clickHandler</span>:<span class="storage function">function</span> () {</td>
+
+</tr>
+
+<tr class="line line-9">
+
+<td class="line-code">    <span class="comment">// the use of this.data here is fine, because &quot;this&quot; refers to the user object, and data is a property on the user object.</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-10">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+<tr class="line line-11">
+
+<td class="line-code">    <span class="keyword">this</span>.data.<span class="keyword">forEach</span> (<span class="storage function">function</span> (person) {</td>
+
+</tr>
+
+<tr class="line line-12">
+
+<td class="line-code">    <span class="comment">// But here inside the anonymous function (that we pass to the forEach method), &quot;this&quot; no longer refers to the user object.</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-13">
+
+<td class="line-code">    <span class="comment">// This inner function cannot access the outer function&apos;s &quot;this&quot;</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-15">
+
+<td class="line-code">    console.log (<span class="string">&quot;What is This referring to? &quot;</span> <span class="keyword operator">+</span> <span class="keyword">this</span>); <span class="comment">//[object Window]</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-17">
+
+<td class="line-code">    console.log (person.name <span class="keyword operator">+</span> <span class="string">&quot; is playing at &quot;</span> <span class="keyword operator">+</span> <span class="keyword">this</span>.tournament);</td>
+
+</tr>
+
+<tr class="line line-18">
+
+<td class="line-code">    <span class="comment">// T. Woods is playing at undefined</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-19">
+
+<td class="line-code">    <span class="comment">// P. Mickelson is playing at undefined</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-20">
+
+<td class="line-code">    })</td>
+
+</tr>
+
+<tr class="line line-21">
+
+<td class="line-code">    }</td>
+
+</tr>
+
+<tr class="line line-22">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+<tr class="line line-23">
+
+<td class="line-code">    }</td>
+
+</tr>
+
+<tr class="line line-24">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+<tr class="line line-25">
+
+<td class="line-code">    user.<span class="function call">clickHandler</span>(); <span class="comment">// What is &quot;this&quot; referring to? [object Window]</span></td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</pre>
+
+<p><em>this</em> inside the anonymous function cannot access the outer function&#x2019;s <em>this</em>, so it is bound to the global window object, when <em>strict</em> mode is not being used.</p>
+<p><strong>Solution to maintain <em>this</em> inside anonymous functions:</strong><br> To fix the problem with using <em>this</em> inside the anonymous function passed to the <em>forEach</em> method, we use a common practice in JavaScript and set the <em>this</em> value to another variable before we enter the forEach<br> method:</p>
+<pre>
+
+<table class="rainbow" data-language="javascript">
+
+<tbody>
+
+<tr class="line line-1">
+
+<td class="line-code">    <span class="keyword">var</span> user <span class="keyword operator">=</span> {</td>
+
+</tr>
+
+<tr class="line line-2">
+
+<td class="line-code">    tournament:<span class="string">&quot;The Masters&quot;</span>,</td>
+
+</tr>
+
+<tr class="line line-3">
+
+<td class="line-code">    data      :[</td>
+
+</tr>
+
+<tr class="line line-4">
+
+<td class="line-code">    {name:<span class="string">&quot;T. Woods&quot;</span>, age:<span class="constant numeric">37</span>},</td>
+
+</tr>
+
+<tr class="line line-5">
+
+<td class="line-code">    {name:<span class="string">&quot;P. Mickelson&quot;</span>, age:<span class="constant numeric">43</span>}</td>
+
+</tr>
+
+<tr class="line line-6">
+
+<td class="line-code">    ],</td>
+
+</tr>
+
+<tr class="line line-7">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+<tr class="line line-8">
+
+<td class="line-code">    <span class="entity function">clickHandler</span>:<span class="storage function">function</span> (event) {</td>
+
+</tr>
+
+<tr class="line line-9">
+
+<td class="line-code">    <span class="comment">// To capture the value of &quot;this&quot; when it refers to the user object, we have to set it to another variable here:</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-10">
+
+<td class="line-code">    <span class="comment">// We set the value of &quot;this&quot; to theUserObj variable, so we can use it later</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-11">
+
+<td class="line-code">    <span class="keyword">var</span> theUserObj <span class="keyword operator">=</span> <span class="keyword">this</span>;</td>
+
+</tr>
+
+<tr class="line line-12">
+
+<td class="line-code">    <span class="keyword">this</span>.data.<span class="keyword">forEach</span> (<span class="storage function">function</span> (person) {</td>
+
+</tr>
+
+<tr class="line line-13">
+
+<td class="line-code">    <span class="comment">// Instead of using this.tournament, we now use theUserObj.tournament</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-14">
+
+<td class="line-code">    console.log (person.name <span class="keyword operator">+</span> <span class="string">&quot; is playing at &quot;</span> <span class="keyword operator">+</span> theUserObj.tournament);</td>
+
+</tr>
+
+<tr class="line line-15">
+
+<td class="line-code">    })</td>
+
+</tr>
+
+<tr class="line line-16">
+
+<td class="line-code">    }</td>
+
+</tr>
+
+<tr class="line line-17">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+<tr class="line line-18">
+
+<td class="line-code">    }</td>
+
+</tr>
+
+<tr class="line line-19">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+<tr class="line line-20">
+
+<td class="line-code">    user.<span class="function call">clickHandler</span>();</td>
+
+</tr>
+
+<tr class="line line-21">
+
+<td class="line-code">    <span class="comment">// T. Woods is playing at The Masters</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-22">
+
+<td class="line-code">    <span class="comment">//  P. Mickelson is playing at The Masters</span></td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</pre>
+
+<p>It is worth noting that many JavaScript developers like to name a variable &#x201C;that,&#x201D; as seen below, to set the value of <em>this</em>. The use of the word &#x201C;that&#x201D; is very awkward for me, so I try to name the variable a noun that describes which object &#x201C;this&#x201D; is referring to, hence my use of <em>var theUserObj = this</em> in the preceding code.</p>
+<pre>
+
+<table class="rainbow" data-language="javascript">
+
+<tbody>
+
+<tr class="line line-1">
+
+<td class="line-code">    <span class="comment">// A common practice amongst JavaScript users is to use this code</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-2">
+
+<td class="line-code">    <span class="keyword">var</span> that <span class="keyword operator">=</span> <span class="keyword">this</span>;</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</pre>
+
+<p>&#x2014; <a href="http://jsbin.com/ibohiw/1/edit" target="_blank" rel="external">View a working example of this on JSBin</a></p>
+</li>
+<li><h2 id="fix-this-when-method-is-assigned-to-a-variable"><span id="Fix_this_when_method_is_assigned_to_a_variable">Fix <em>this</em> when method is assigned to a variable</span></h2><p>The <em>this</em> value escapes our imagination and is bound to another object, if we assign a method that uses <em>this</em> to a variable. Let&#x2019;s see how:</p>
+<pre>
+
+<table class="rainbow" data-language="javascript">
+
+<tbody>
+
+<tr class="line line-1">
+
+<td class="line-code">    <span class="comment">// This data variable is a global variable</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-2">
+
+<td class="line-code">    <span class="keyword">var</span> data <span class="keyword operator">=</span> [</td>
+
+</tr>
+
+<tr class="line line-3">
+
+<td class="line-code">    {name:<span class="string">&quot;Samantha&quot;</span>, age:<span class="constant numeric">12</span>},</td>
+
+</tr>
+
+<tr class="line line-4">
+
+<td class="line-code">    {name:<span class="string">&quot;Alexis&quot;</span>, age:<span class="constant numeric">14</span>}</td>
+
+</tr>
+
+<tr class="line line-5">
+
+<td class="line-code">    ];</td>
+
+</tr>
+
+<tr class="line line-6">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+<tr class="line line-7">
+
+<td class="line-code">    <span class="keyword">var</span> user <span class="keyword operator">=</span> {</td>
+
+</tr>
+
+<tr class="line line-8">
+
+<td class="line-code">    <span class="comment">// this data variable is a property on the user object</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-9">
+
+<td class="line-code">    data    :[</td>
+
+</tr>
+
+<tr class="line line-10">
+
+<td class="line-code">    {name:<span class="string">&quot;T. Woods&quot;</span>, age:<span class="constant numeric">37</span>},</td>
+
+</tr>
+
+<tr class="line line-11">
+
+<td class="line-code">    {name:<span class="string">&quot;P. Mickelson&quot;</span>, age:<span class="constant numeric">43</span>}</td>
+
+</tr>
+
+<tr class="line line-12">
+
+<td class="line-code">    ],</td>
+
+</tr>
+
+<tr class="line line-13">
+
+<td class="line-code">    <span class="entity function">showData</span>:<span class="storage function">function</span> (event) {</td>
+
+</tr>
+
+<tr class="line line-14">
+
+<td class="line-code">    <span class="keyword">var</span> randomNum <span class="keyword operator">=</span> ((Math.random () <span class="keyword operator">*</span> <span class="constant numeric">2</span> <span class="keyword operator">|</span> <span class="constant numeric">0</span>) <span class="keyword operator">+</span> <span class="constant numeric">1</span>) <span class="keyword operator">-</span> <span class="constant numeric">1</span>; <span class="comment">// random number between 0 and 1</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-15">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+<tr class="line line-16">
+
+<td class="line-code">    <span class="comment">// This line is adding a random person from the data array to the text field</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-17">
+
+<td class="line-code">    console.log (<span class="keyword">this</span>.data[randomNum].name <span class="keyword operator">+</span> <span class="string">&quot; &quot;</span> <span class="keyword operator">+</span> <span class="keyword">this</span>.data[randomNum].age);</td>
+
+</tr>
+
+<tr class="line line-18">
+
+<td class="line-code">    }</td>
+
+</tr>
+
+<tr class="line line-19">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+<tr class="line line-20">
+
+<td class="line-code">    }</td>
+
+</tr>
+
+<tr class="line line-21">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+<tr class="line line-22">
+
+<td class="line-code">    <span class="comment">// Assign the user.showData to a variable</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-23">
+
+<td class="line-code">    <span class="keyword">var</span> showUserData <span class="keyword operator">=</span> user.showData;</td>
+
+</tr>
+
+<tr class="line line-24">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+<tr class="line line-25">
+
+<td class="line-code">    <span class="comment">// When we execute the showUserData function, the values printed to the console are from the global data array, not from the data array in the user object</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-26">
+
+<td class="line-code">    <span class="comment">//</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-27">
+
+<td class="line-code">    showUserData (); <span class="comment">// Samantha 12 (from the global data array)</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-28">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</pre>
+
+<p><strong>Solution for maintaining <em>this</em> when method is assigned to a variable:</strong><br> We can fix this problem by specifically setting the <em>this</em> value with the bind method:</p>
+<pre>
+
+<table class="rainbow" data-language="javascript">
+
+<tbody>
+
+<tr class="line line-1">
+
+<td class="line-code">    <span class="comment">// Bind the showData method to the user object</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-2">
+
+<td class="line-code">    <span class="keyword">var</span> showUserData <span class="keyword operator">=</span> user.showData.bind (user);</td>
+
+</tr>
+
+<tr class="line line-3">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+<tr class="line line-4">
+
+<td class="line-code">    <span class="comment">// Now we get the value from the user object, because the <em>this</em> keyword is bound to the user object</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-5">
+
+<td class="line-code">    showUserData (); <span class="comment">// P. Mickelson 43</span></td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</pre>
+</li>
+<li><h2 id="fix-this-when-borrowing-methods"><span id="Fix_this_when_borrowing_methods">Fix <em>this</em> when borrowing methods</span></h2><p>Borrowing methods is a common practice in JavaScript development, and as JavaScript developers, we will certainly encounter this practice time and again. And from time to time, we will engage in this time-saving practice as well. For more on borrowing methods, read my in-depth article, <a href="http://javascriptissexy.com/javascript-apply-call-and-bind-methods-are-essential-for-javascript-professionals/" title="JavaScript&#x2019;s Apply, Call, and Bind Methods are Essential for JavaScript Professionals" target="_blank" rel="external">JavaScript&#x2019;s Apply, Call, and Bind Methods are Essential for JavaScript Professionals</a>.</p>
+<p>Let&#x2019;s examine the relevance of <em>this</em> in the context of borrowing methods:</p>
+<pre>
+
+<table class="rainbow" data-language="javascript">
+
+<tbody>
+
+<tr class="line line-1">
+
+<td class="line-code">    <span class="comment">// We have two objects. One of them has a method called avg () that the other doesn&apos;t have</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-2">
+
+<td class="line-code">    <span class="comment">// So we will borrow the (avg()) method</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-3">
+
+<td class="line-code">    <span class="keyword">var</span> gameController <span class="keyword operator">=</span> {</td>
+
+</tr>
+
+<tr class="line line-4">
+
+<td class="line-code">    scores  :[<span class="constant numeric">20</span>, <span class="constant numeric">34</span>, <span class="constant numeric">55</span>, <span class="constant numeric">46</span>, <span class="constant numeric">77</span>],</td>
+
+</tr>
+
+<tr class="line line-5">
+
+<td class="line-code">    avgScore:<span class="constant language">null</span>,</td>
+
+</tr>
+
+<tr class="line line-6">
+
+<td class="line-code">    players :[</td>
+
+</tr>
+
+<tr class="line line-7">
+
+<td class="line-code">    {name:<span class="string">&quot;Tommy&quot;</span>, playerID:<span class="constant numeric">987</span>, age:<span class="constant numeric">23</span>},</td>
+
+</tr>
+
+<tr class="line line-8">
+
+<td class="line-code">    {name:<span class="string">&quot;Pau&quot;</span>, playerID:<span class="constant numeric">87</span>, age:<span class="constant numeric">33</span>}</td>
+
+</tr>
+
+<tr class="line line-9">
+
+<td class="line-code">    ]</td>
+
+</tr>
+
+<tr class="line line-10">
+
+<td class="line-code">    }</td>
+
+</tr>
+
+<tr class="line line-11">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+<tr class="line line-12">
+
+<td class="line-code">    <span class="keyword">var</span> appController <span class="keyword operator">=</span> {</td>
+
+</tr>
+
+<tr class="line line-13">
+
+<td class="line-code">    scores  :[<span class="constant numeric">900</span>, <span class="constant numeric">845</span>, <span class="constant numeric">809</span>, <span class="constant numeric">950</span>],</td>
+
+</tr>
+
+<tr class="line line-14">
+
+<td class="line-code">    avgScore:<span class="constant language">null</span>,</td>
+
+</tr>
+
+<tr class="line line-15">
+
+<td class="line-code">    avg     :<span class="storage function">function</span> () {</td>
+
+</tr>
+
+<tr class="line line-16">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+<tr class="line line-17">
+
+<td class="line-code">    <span class="keyword">var</span> sumOfScores <span class="keyword operator">=</span> <span class="keyword">this</span>.scores.reduce (<span class="storage function">function</span> (prev, cur, index, <span class="keyword">array</span>) {</td>
+
+</tr>
+
+<tr class="line line-18">
+
+<td class="line-code">    <span class="keyword">return</span> prev <span class="keyword operator">+</span> cur;</td>
+
+</tr>
+
+<tr class="line line-19">
+
+<td class="line-code">    });</td>
+
+</tr>
+
+<tr class="line line-20">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+<tr class="line line-21">
+
+<td class="line-code">    <span class="keyword">this</span>.avgScore <span class="keyword operator">=</span> sumOfScores / <span class="keyword">this</span>.scores.<span class="support property">length</span>;</td>
+
+</tr>
+
+<tr class="line line-22">
+
+<td class="line-code">    }</td>
+
+</tr>
+
+<tr class="line line-23">
+
+<td class="line-code">    }</td>
+
+</tr>
+
+<tr class="line line-24">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+<tr class="line line-25">
+
+<td class="line-code">    <span class="comment">//If we run the code below,</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-26">
+
+<td class="line-code">    <span class="comment">// the gameController.avgScore property will be set to the average score from the appController object &quot;scores&quot; array</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-28">
+
+<td class="line-code">    <span class="comment">// Don&apos;t run this code, for it is just for illustration; we want the appController.avgScore to remain null</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-29">
+
+<td class="line-code">    gameController.avgScore <span class="keyword operator">=</span> appController.<span class="function call">avg</span>();</td>
+
+</tr>
+
+<tr class="line line-30">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</pre>
+
+<p>The avg method&#x2019;s &#x201C;this&#x201D; keyword will not refer to the gameController object, it will refer to the appController object because it is being invoked on the appController.</p>
+<p><strong>Solution for fixing <em>this</em> when borrowing methods:</strong><br> To fix the issue and make sure that <em>this</em> inside the appController.avg () method refers to gameController, we can use the <em>apply ()</em> method thus:</p>
+<pre>
+
+<table class="rainbow" data-language="javascript">
+
+<tbody>
+
+<tr class="line line-1">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+<tr class="line line-2">
+
+<td class="line-code">    <span class="comment">// Note that we are using the apply () method, so the 2nd argument has to be an array&#x2014;the arguments to pass to the appController.avg () method.</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-3">
+
+<td class="line-code">    appController.avg.apply (gameController, gameController.scores);</td>
+
+</tr>
+
+<tr class="line line-4">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+<tr class="line line-5">
+
+<td class="line-code">    <span class="comment">// The avgScore property was successfully set on the gameController object, even though we borrowed the avg () method from the appController object</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-6">
+
+<td class="line-code">    console.log (gameController.avgScore); <span class="comment">// 46.4</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-7">
+
+<td class="line-code">&#x200B;</td>
+
+</tr>
+
+<tr class="line line-8">
+
+<td class="line-code">    <span class="comment">// appController.avgScore is still null; it was not updated, only gameController.avgScore was updated</span>&#x200B;</td>
+
+</tr>
+
+<tr class="line line-9">
+
+<td class="line-code">    console.log (appController.avgScore); <span class="comment">// null</span></td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</pre>
+
+<p>The <em>gameController</em> object borrows the appController&#x2019;s avg () method. The &#x201C;this&#x201D; value inside the appController.avg () method will be set to the gameController object because we pass the gameController object as the first parameter to the apply () method. The first parameter in the apply method always sets the value of &#x201C;this&#x201D; explicitly.</p>
+<p>&#x2014; <a href="http://jsbin.com/iwaver/1/edit" target="_blank" rel="external">View a working example of this on JSBin</a></p>
+</li>
+</ol>
+<h3 id="final-words">Final Words</h3><p>I am hopeful you have learned enough to help you understand the <em>this</em> keyword in JavaScript. Now you have the tools (bind, apply, and call, and setting <em>this</em> to a variable) necessary to conquer JavaScript&#x2019;s <em>this</em> in every scenario.</p>
+<p>As you have learned, <em>this</em> gets a bit troublesome in situations where the original context (where <em>this</em> was defined) changes, particularly in callback functions, when invoked with a different object, or when borrowing methods. Always remember that <em>this</em> is assigned the value of the object that invoked the <em>this Function</em>.</p>
+<p>Be good. Sleep well. And enjoy coding.</p>
+<div class="oddDays pinkBG"><br><br>## <span id="Our_Career_Paths_and_Courses_Website_Is_Now_Live">Our Career Paths and Courses Website Is Now Live</span><br><br>### New UPDATE: June 8, 2015<br><br>Enrollment for our Career Paths is well underway. Enroll now. <em>Career Path 1: Junior JavaScript Developer</em> and <em>Career Path 3: Modern Frontend Developer</em> <strong>are already full</strong> (you may still get a spot if you join the wait list now).<br><br>The second cohort for <em>Career Path 5: Modern Fullstack Developer</em> is <strong>also full</strong>. The second cohort starts immediately after the first cohort of Career Path 3 graduates.<br><br><a href="https://learn.modern-developer.com" target="_blank" rel="external">https://learn.modern-developer.com</a><br><br></div>
+
+<div class="sharedaddy sd-sharing-enabled"><br><br><div class="robots-nocontent sd-block sd-social sd-social-icon sd-sharing"><br><br>### Share this:<br><br><div class="sd-content"><br><br><em>   <a href="#"><span>Share</span></a><br><br><div class="sharing-hidden"><br><br><div class="inner" style="display: none;">
+
+</div></div></em>   <a href="http://javascriptissexy.com/understand-javascripts-this-with-clarity-and-master-it/?share=google-plus-1&amp;nb=1" title="Click to share on Google+" target="_blank" rel="external"><span></span></a><br><em>   <a href="http://javascriptissexy.com/understand-javascripts-this-with-clarity-and-master-it/?share=email&amp;nb=1" title="Click to email this to a friend" target="_blank" rel="external"><span></span></a>
+
+</em>   <a href="http://javascriptissexy.com/understand-javascripts-this-with-clarity-and-master-it/?share=twitter&amp;nb=1" title="Click to share on Twitter" target="_blank" rel="external"><span></span></a><br><em>   <a href="http://javascriptissexy.com/understand-javascripts-this-with-clarity-and-master-it/?share=custom-1364194746&amp;nb=1" title="Click to share" target="_blank" rel="external"><span style="background-image:url(&quot;http://hackerboss.com/wp/wp-content/plugins/backtype-connect/images/yc-icon-50.gif&quot;);"></span></a>
+
+</em>   <a href="http://javascriptissexy.com/understand-javascripts-this-with-clarity-and-master-it/?share=linkedin&amp;nb=1" title="Click to share on LinkedIn" target="_blank" rel="external"><span></span></a><br>*   <a href="http://javascriptissexy.com/understand-javascripts-this-with-clarity-and-master-it/?share=facebook&amp;nb=1" title="Share on Facebook" target="_blank" rel="external"><span></span></a><br><br></div>
+
+<p></p></div><p></p>
+<p></p></div><p></p>
+<p></p></div><p></p>
+<p></p></div><p></p>
+<p></p>
+<div class="entry-meta entry-footer"><span class="entry-categories">Posted in: <a href="http://javascriptissexy.com/category/16-important-javascript-concepts/" target="_blank" rel="external">16 Important JavaScript Concepts</a>, <a href="http://javascriptissexy.com/category/javascript/" target="_blank" rel="external">JavaScript</a></span> <span class="entry-tags">/ Tagged: <a href="http://javascriptissexy.com/tag/beginner-javascript/" target="_blank" rel="external">Beginner JavaScript</a>, <a href="http://javascriptissexy.com/tag/intermediate-javascript/" target="_blank" rel="external">Intermediate Javascript</a>, <a href="http://javascriptissexy.com/tag/javascript-this/" target="_blank" rel="external">javaScript this</a>, <a href="http://javascriptissexy.com/tag/javascript-tips/" target="_blank" rel="external">JavaScript Tips</a></span><br><br><div class="postBottom"><span class="byAuthor"><a href="http://javascriptissexy.com/author/richardb/" title="Posts by Richard" target="_blank" rel="external">Richard</a></span> <span class="byAuthorDescription">Thanks for your time; please come back soon. Email me here: javascriptissexy at gmail email, or use the <a href="http://javascriptissexy.com/contact/" target="_blank" rel="external">contact</a> form.</span></div>
+
+<p></p></div><p></p>
+<p></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/client-develop/javascript-use-this/index.html" data-id="cie2eumld0007msa5bbg0r6ez" class="article-share-link">Share</a>
+      
+        <a href="http://yoursite.com/client-develop/javascript-use-this/index.html#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloud/">cloud</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/09/02/使用客户端API上传文件到GoogleDrive/">使用客户端API上传文件到GoogleDrive</a>
+          </li>
+        
+          <li>
+            <a href="/2015/09/02/使用hexo建立博客/">使用hexo建立博客</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 hork,lim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'haolin2015';
+  
+  var disqus_url = 'http://yoursite.com/client-develop/javascript-use-this/index.html';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

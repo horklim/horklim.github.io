@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Upload file to google drive(web) | Hexo</title>
+  <title>GoogleDrive | Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Creating a Google Developers Console project and client IDBefore you can integrate Google Sign-In into your website, you must have a Google Developers Console project. In the project, you create a cli">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Upload file to google drive(web)">
+<meta property="og:title" content="GoogleDrive">
 <meta property="og:url" content="http://yoursite.com/project/google-drive-file-upload/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Blog">
 <meta property="og:description" content="Creating a Google Developers Console project and client IDBefore you can integrate Google Sign-In into your website, you must have a Google Developers Console project. In the project, you create a cli">
 <meta property="og:image" content="http://yoursite.com/Google Drive File Upload 001.png">
 <meta property="og:image" content="http://yoursite.com/Google Drive File Upload 002.png">
@@ -19,12 +19,12 @@
 <meta property="og:image" content="http://yoursite.com/Google Drive File Upload 006.png">
 <meta property="og:image" content="http://yoursite.com/Google Drive File Upload 007.png">
 <meta property="og:image" content="http://yoursite.com/Google Drive File Upload 008.png">
-<meta property="og:updated_time" content="2015-08-12T03:45:36.623Z">
+<meta property="og:updated_time" content="2015-09-02T05:26:05.538Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Upload file to google drive(web)">
+<meta name="twitter:title" content="GoogleDrive">
 <meta name="twitter:description" content="Creating a Google Developers Console project and client IDBefore you can integrate Google Sign-In into your website, you must have a Google Developers Console project. In the project, you create a cli">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="Blog" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -42,7 +42,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">Blog</a>
       </h1>
       
     </div>
@@ -71,7 +71,7 @@
         <section id="main"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/project/google-drive-file-upload/index.html" class="article-date">
-  <time datetime="2015-08-11T03:00:52.000Z" itemprop="datePublished">2015-08-11</time>
+  <time datetime="2015-01-12T12:10:31.000Z" itemprop="datePublished">2015-01-12</time>
 </a>
     
   </div>
@@ -82,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Upload file to google drive(web)
+      GoogleDrive
     </h1>
   
 
@@ -90,18 +90,23 @@
     
     <div class="article-entry" itemprop="articleBody">
       
+        <!-- Table of Contents -->
+        <div id="toc" class="toc-article">
+          <strong class="toc-title">文章目录</strong>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#creating-a-google-developers-console-project-and-client-id"><span class="toc-number">1.</span> <span class="toc-text">Creating a Google Developers Console project and client ID</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-select-a-project-or-create-a-new-one-by-clicking-create-project"><span class="toc-number">1.1.</span> <span class="toc-text">1. Select a project, or create a new one by clicking Create Project:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-type-into-consent-screen"><span class="toc-number">1.2.</span> <span class="toc-text">2. Type into consent screen.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-create-client-id"><span class="toc-number">1.3.</span> <span class="toc-text">3. Create Client ID</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#quickstart-run-a-drive-app-in-javascript"><span class="toc-number">2.</span> <span class="toc-text">Quickstart: Run a Drive app in JavaScript</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#step-1-enable-the-drive-api"><span class="toc-number">2.1.</span> <span class="toc-text">Step 1: Enable the Drive API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-2-set-up-the-sample"><span class="toc-number">2.2.</span> <span class="toc-text">Step 2: Set up the sample</span></a></li></ol></li></ol>
+        </div>
         <p><br></p>
-<h2 id="Creating_a_Google_Developers_Console_project_and_client_ID">Creating a Google Developers Console project and client ID</h2><p>Before you can integrate Google Sign-In into your website, you must have a Google Developers Console project. In the project, you create a client ID, which you need to call the sign-in API.</p>
+<h2 id="creating-a-google-developers-console-project-and-client-id">Creating a Google Developers Console project and client ID</h2><p>Before you can integrate Google Sign-In into your website, you must have a Google Developers Console project. In the project, you create a client ID, which you need to call the sign-in API.</p>
 <p>To create a Google Developers Console project and client ID, follow these steps:</p>
-<h3 id="1-_Select_a_project,_or_create_a_new_one_by_clicking_Create_Project:">1. Select a project, or create a new one by clicking Create Project:</h3><p>Go to the [Google Developers Console]（<a href="https://console.developers.google.com" target="_blank" rel="external">https://console.developers.google.com</a>). </p>
+<h3 id="1-select-a-project-or-create-a-new-one-by-clicking-create-project">1. Select a project, or create a new one by clicking Create Project:</h3><p>Go to the [Google Developers Console]&#xFF08;<a href="https://console.developers.google.com" target="_blank" rel="external">https://console.developers.google.com</a>). </p>
 <p><img src="Google Drive File Upload 001.png" alt="Enable Google APIs for use in your apps" title="Enable Google APIs for use in your apps"></p>
 <p>Type in a name for your project</p>
 <p><img src="Google Drive File Upload 002.png" alt="Type in a name for your project" title="Type in a name for your project"></p>
-<h3 id="2-_Type_into_consent_screen-">2. Type into consent screen.</h3><p>a. In the sidebar under “APIs &amp; auth”, select Consent screen.</p>
+<h3 id="2-type-into-consent-screen">2. Type into consent screen.</h3><p>a. In the sidebar under &#x201C;APIs &amp; auth&#x201D;, select Consent screen.</p>
 <p>b. Choose an Email Address and specify a Product Name.</p>
 <p><img src="Google Drive File Upload 003.png" alt="Full into consent screen" title="Full into consent screen"></p>
-<h3 id="3-_Create_Client_ID">3. Create Client ID</h3><p>a. Click Create a new Client ID — a dialog box appears.</p>
-<p>b. In the sidebar under “APIs &amp; auth”, select Credentials.</p>
+<h3 id="3-create-client-id">3. Create Client ID</h3><p>a. Click Create a new Client ID &#x2014; a dialog box appears.</p>
+<p>b. In the sidebar under &#x201C;APIs &amp; auth&#x201D;, select Credentials.</p>
 <p><img src="Google Drive File Upload 004.png" alt="Create new Client ID" title="Create new Client ID"></p>
 <p>c. In the Application type section of the dialog, select Web application.</p>
 <p>d. In the Authorized JavaScript origins field, enter the origin for your app. You can enter multiple origins to allow for your app to run on different protocols, domains, or subdomains. Wildcards are not allowed. In the example below, the second URL could be a production URL.</p>
@@ -112,15 +117,131 @@
 <p>g. Get Client ID.</p>
 <p><img src="Google Drive File Upload 006.png" alt="Get Client ID" title="Get Client ID"></p>
 <p><br></p>
-<h2 id="Quickstart:_Run_a_Drive_app_in_JavaScript">Quickstart: Run a Drive app in JavaScript</h2><p><br></p>
-<h3 id="Step_1:_Enable_the_Drive_API">Step 1: Enable the Drive API</h3><p>a. In the sidebar under “APIs &amp; auth”, select API.</p>
+<h2 id="quickstart-run-a-drive-app-in-javascript">Quickstart: Run a Drive app in JavaScript</h2><p><br></p>
+<h3 id="step-1-enable-the-drive-api">Step 1: Enable the Drive API</h3><p>a. In the sidebar under &#x201C;APIs &amp; auth&#x201D;, select API.</p>
 <p><img src="Google Drive File Upload 007.png" alt="Enable Drive API" title="Enable Drive API"></p>
 <p>b. Click Enable API</p>
 <p><img src="Google Drive File Upload 008.png" alt="Enable Drive API" title="Enable Drive API"></p>
-<p>Copy the following source code to a file name quickstart.html. In the location marked <your_client_id>, add the Client ID you created in the “Enable the Drive API” step.</your_client_id></p>
+<p>Copy the following source code to a file name quickstart.html. In the location marked <your_client_id>, add the Client ID you created in the &#x201C;Enable the Drive API&#x201D; step.</your_client_id></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Note: The AUTHORIZED JAVASCRIPT ORIGINS field must be <span class="operator"><span class="keyword">set</span> <span class="keyword">to</span> the URI <span class="keyword">of</span> the <span class="keyword">domain</span> you host the <span class="keyword">sample</span> <span class="keyword">on</span>. <span class="keyword">For</span> example, <span class="keyword">http</span>://localhost <span class="keyword">if</span> you <span class="keyword">are</span> running the <span class="keyword">sample</span> <span class="keyword">from</span> a <span class="keyword">local</span> webserver.</span></span><br></pre></td></tr></table></figure>
-<h3 id="Step_2:_Set_up_the_sample">Step 2: Set up the sample</h3><p>Copy the following source code to a file name quickstart.html. In the location marked <your_client_id>, add the Client ID you created in the “Enable the Drive API” step.</your_client_id></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;html&#62;&#10;  &#60;head&#62;&#10;    &#60;meta http-equiv=&#34;Content-type&#34; content=&#34;text/html;charset=UTF-8&#34;&#62;&#10;    &#60;script type=&#34;text/javascript&#34;&#62;&#10;      var CLIENT_ID = &#39;&#60;YOUR_CLIENT_ID&#62;&#39;;&#10;      var SCOPES = &#39;https://www.googleapis.com/auth/drive&#39;;&#10;&#10;      /**&#10;       * Called when the client library is loaded to start the auth flow.&#10;       */&#10;      function handleClientLoad() &#123;&#10;        window.setTimeout(checkAuth, 1);&#10;      &#125;&#10;&#10;      /**&#10;       * Check if the current user has authorized the application.&#10;       */&#10;      function checkAuth() &#123;&#10;        gapi.auth.authorize(&#10;            &#123;&#39;client_id&#39;: CLIENT_ID, &#39;scope&#39;: SCOPES, &#39;immediate&#39;: true&#125;,&#10;            handleAuthResult);&#10;      &#125;&#10;&#10;      /**&#10;       * Called when authorization server replies.&#10;       *&#10;       * @param &#123;Object&#125; authResult Authorization result.&#10;       */&#10;      function handleAuthResult(authResult) &#123;&#10;        var authButton = document.getElementById(&#39;authorizeButton&#39;);&#10;        var filePicker = document.getElementById(&#39;filePicker&#39;);&#10;        authButton.style.display = &#39;none&#39;;&#10;        filePicker.style.display = &#39;none&#39;;&#10;        if (authResult &#38;&#38; !authResult.error) &#123;&#10;          // Access token has been successfully retrieved, requests can be sent to the API.&#10;          filePicker.style.display = &#39;block&#39;;&#10;          filePicker.onchange = uploadFile;&#10;        &#125; else &#123;&#10;          // No access token could be retrieved, show the button to start the authorization flow.&#10;          authButton.style.display = &#39;block&#39;;&#10;          authButton.onclick = function() &#123;&#10;              gapi.auth.authorize(&#10;                  &#123;&#39;client_id&#39;: CLIENT_ID, &#39;scope&#39;: SCOPES, &#39;immediate&#39;: false&#125;,&#10;                  handleAuthResult);&#10;          &#125;;&#10;        &#125;&#10;      &#125;&#10;&#10;      /**&#10;       * Start the file upload.&#10;       *&#10;       * @param &#123;Object&#125; evt Arguments from the file selector.&#10;       */&#10;      function uploadFile(evt) &#123;&#10;        gapi.client.load(&#39;drive&#39;, &#39;v2&#39;, function() &#123;&#10;          var file = evt.target.files[0];&#10;          insertFile(file);&#10;        &#125;);&#10;      &#125;&#10;&#10;      /**&#10;       * Insert new file.&#10;       *&#10;       * @param &#123;File&#125; fileData File object to read data from.&#10;       * @param &#123;Function&#125; callback Function to call when the request is complete.&#10;       */&#10;      function insertFile(fileData, callback) &#123;&#10;        const boundary = &#39;-------314159265358979323846&#39;;&#10;        const delimiter = &#34;\r\n--&#34; + boundary + &#34;\r\n&#34;;&#10;        const close_delim = &#34;\r\n--&#34; + boundary + &#34;--&#34;;&#10;&#10;        var reader = new FileReader();&#10;        reader.readAsBinaryString(fileData);&#10;        reader.onload = function(e) &#123;&#10;          var contentType = fileData.type || &#39;application/octet-stream&#39;;&#10;          var metadata = &#123;&#10;            &#39;title&#39;: fileData.name,&#10;            &#39;mimeType&#39;: contentType&#10;          &#125;;&#10;&#10;          var base64Data = btoa(reader.result);&#10;          var multipartRequestBody =&#10;              delimiter +&#10;              &#39;Content-Type: application/json\r\n\r\n&#39; +&#10;              JSON.stringify(metadata) +&#10;              delimiter +&#10;              &#39;Content-Type: &#39; + contentType + &#39;\r\n&#39; +&#10;              &#39;Content-Transfer-Encoding: base64\r\n&#39; +&#10;              &#39;\r\n&#39; +&#10;              base64Data +&#10;              close_delim;&#10;&#10;          var request = gapi.client.request(&#123;&#10;              &#39;path&#39;: &#39;/upload/drive/v2/files&#39;,&#10;              &#39;method&#39;: &#39;POST&#39;,&#10;              &#39;params&#39;: &#123;&#39;uploadType&#39;: &#39;multipart&#39;&#125;,&#10;              &#39;headers&#39;: &#123;&#10;                &#39;Content-Type&#39;: &#39;multipart/mixed; boundary=&#34;&#39; + boundary + &#39;&#34;&#39;&#10;              &#125;,&#10;              &#39;body&#39;: multipartRequestBody&#125;);&#10;          if (!callback) &#123;&#10;            callback = function(file) &#123;&#10;              console.log(file)&#10;            &#125;;&#10;          &#125;&#10;          request.execute(callback);&#10;        &#125;&#10;      &#125;&#10;    &#60;/script&#62;&#10;    &#60;script type=&#34;text/javascript&#34; src=&#34;https://apis.google.com/js/client.js?onload=handleClientLoad&#34;&#62;&#60;/script&#62;&#10;  &#60;/head&#62;&#10;  &#60;body&#62;&#10;    &#60;!--Add a file picker for the user to start the upload process --&#62;&#10;    &#60;input type=&#34;file&#34; id=&#34;filePicker&#34; style=&#34;display: none&#34; /&#62;&#10;    &#60;input type=&#34;button&#34; id=&#34;authorizeButton&#34; style=&#34;display: none&#34; value=&#34;Authorize&#34; /&#62;&#10;  &#60;/body&#62;&#10;&#60;/html&#62;</span><br></pre></td></tr></table></figure>
+<h3 id="step-2-set-up-the-sample">Step 2: Set up the sample</h3><p>Copy the following source code to a file name quickstart.html. In the location marked <your_client_id>, add the Client ID you created in the &#x201C;Enable the Drive API&#x201D; step.</your_client_id></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta http-equiv=&quot;Content-type&quot; content=&quot;text/html;charset=UTF-8&quot;&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+      var CLIENT_ID = &apos;&lt;YOUR_CLIENT_ID&gt;&apos;;
+      var SCOPES = &apos;https://www.googleapis.com/auth/drive&apos;;
+
+      /**
+       * Called when the client library is loaded to start the auth flow.
+       */
+      function handleClientLoad() {
+        window.setTimeout(checkAuth, 1);
+      }
+
+      /**
+       * Check if the current user has authorized the application.
+       */
+      function checkAuth() {
+        gapi.auth.authorize(
+            {&apos;client_id&apos;: CLIENT_ID, &apos;scope&apos;: SCOPES, &apos;immediate&apos;: true},
+            handleAuthResult);
+      }
+
+      /**
+       * Called when authorization server replies.
+       *
+       * @param {Object} authResult Authorization result.
+       */
+      function handleAuthResult(authResult) {
+        var authButton = document.getElementById(&apos;authorizeButton&apos;);
+        var filePicker = document.getElementById(&apos;filePicker&apos;);
+        authButton.style.display = &apos;none&apos;;
+        filePicker.style.display = &apos;none&apos;;
+        if (authResult &amp;&amp; !authResult.error) {
+          // Access token has been successfully retrieved, requests can be sent to the API.
+          filePicker.style.display = &apos;block&apos;;
+          filePicker.onchange = uploadFile;
+        } else {
+          // No access token could be retrieved, show the button to start the authorization flow.
+          authButton.style.display = &apos;block&apos;;
+          authButton.onclick = function() {
+              gapi.auth.authorize(
+                  {&apos;client_id&apos;: CLIENT_ID, &apos;scope&apos;: SCOPES, &apos;immediate&apos;: false},
+                  handleAuthResult);
+          };
+        }
+      }
+
+      /**
+       * Start the file upload.
+       *
+       * @param {Object} evt Arguments from the file selector.
+       */
+      function uploadFile(evt) {
+        gapi.client.load(&apos;drive&apos;, &apos;v2&apos;, function() {
+          var file = evt.target.files[0];
+          insertFile(file);
+        });
+      }
+
+      /**
+       * Insert new file.
+       *
+       * @param {File} fileData File object to read data from.
+       * @param {Function} callback Function to call when the request is complete.
+       */
+      function insertFile(fileData, callback) {
+        const boundary = &apos;-------314159265358979323846&apos;;
+        const delimiter = &quot;\r\n--&quot; + boundary + &quot;\r\n&quot;;
+        const close_delim = &quot;\r\n--&quot; + boundary + &quot;--&quot;;
+
+        var reader = new FileReader();
+        reader.readAsBinaryString(fileData);
+        reader.onload = function(e) {
+          var contentType = fileData.type || &apos;application/octet-stream&apos;;
+          var metadata = {
+            &apos;title&apos;: fileData.name,
+            &apos;mimeType&apos;: contentType
+          };
+
+          var base64Data = btoa(reader.result);
+          var multipartRequestBody =
+              delimiter +
+              &apos;Content-Type: application/json\r\n\r\n&apos; +
+              JSON.stringify(metadata) +
+              delimiter +
+              &apos;Content-Type: &apos; + contentType + &apos;\r\n&apos; +
+              &apos;Content-Transfer-Encoding: base64\r\n&apos; +
+              &apos;\r\n&apos; +
+              base64Data +
+              close_delim;
+
+          var request = gapi.client.request({
+              &apos;path&apos;: &apos;/upload/drive/v2/files&apos;,
+              &apos;method&apos;: &apos;POST&apos;,
+              &apos;params&apos;: {&apos;uploadType&apos;: &apos;multipart&apos;},
+              &apos;headers&apos;: {
+                &apos;Content-Type&apos;: &apos;multipart/mixed; boundary=&quot;&apos; + boundary + &apos;&quot;&apos;
+              },
+              &apos;body&apos;: multipartRequestBody});
+          if (!callback) {
+            callback = function(file) {
+              console.log(file)
+            };
+          }
+          request.execute(callback);
+        }
+      }
+    &lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;https://apis.google.com/js/client.js?onload=handleClientLoad&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!--Add a file picker for the user to start the upload process --&gt;
+    &lt;input type=&quot;file&quot; id=&quot;filePicker&quot; style=&quot;display: none&quot; /&gt;
+    &lt;input type=&quot;button&quot; id=&quot;authorizeButton&quot; style=&quot;display: none&quot; value=&quot;Authorize&quot; /&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 <p>Reference:</p>
 <p><a href="https://developers.google.com/identity/sign-in/web/devconsole-project" target="_blank" rel="external">Creating a Google Developers Console project and client ID</a></p>
 <p><a href="https://developers.google.com/identity/sign-in/web/sign-in" target="_blank" rel="external">Integrating Google Sign-In into your web app</a></p>
@@ -131,7 +252,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/project/google-drive-file-upload/index.html" data-id="cid8bvh3l0001c4a5ygdswdlt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/project/google-drive-file-upload/index.html" data-id="cie2euml30003msa5uvw6cnnu" class="article-share-link">Share</a>
       
         <a href="http://yoursite.com/project/google-drive-file-upload/index.html#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -149,6 +270,7 @@
     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
 </section>
+
 </section>
         
           <aside id="sidebar">
@@ -156,14 +278,19 @@
     
   
     
-  
-    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloud/">cloud</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -175,11 +302,11 @@
       <ul>
         
           <li>
-            <a href="/2015/08/10/My-New-Post/">My New Post</a>
+            <a href="/2015/09/02/使用客户端API上传文件到GoogleDrive/">使用客户端API上传文件到GoogleDrive</a>
           </li>
         
           <li>
-            <a href="/2015/08/10/hello-world/">Hello World</a>
+            <a href="/2015/09/02/使用hexo建立博客/">使用hexo建立博客</a>
           </li>
         
       </ul>
@@ -194,7 +321,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2015 John Doe<br>
+      &copy; 2015 hork,lim<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
